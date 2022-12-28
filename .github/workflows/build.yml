@@ -56,6 +56,16 @@ jobs:
         env:
           CI: true
 
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: crazy-max/ghaction-github-pages@v1.4.0
+        with:
+          keep_history: true
+          target-branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+
       - name: Run server
         run: npm run start:built & npx wait-on http://localhost:3000
         env:
