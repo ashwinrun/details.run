@@ -62,7 +62,7 @@ jobs:
         with:
           keep_history: true
           target-branch: gh-pages
-          build_dir: build
+          build_dir: examples/editor/dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
